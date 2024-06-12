@@ -19,14 +19,14 @@ class ActividadesFactory extends Factory
     {
 
         return [
-            'nombre_actividades' => $faker->sentence(),
-            'descripcion' => $faker->paragraph(),
-            'fecha_inicia_actividad' => $faker->dataTimeBetween('-1 week', '+1 week'),
-            'fecha_termino_actividad' => $faker->dataTimeBetween($faker->date('Y-m-d'), $faker->date('Y-m-d')),
-            'hora_inicio_actividad' => $faker->time(),
-            'hora_termino_actividad' => $faker->time(),
-            'lugar' => $faker->streetAddress(),
-            'responsable' => $faker->name(),
+            'nombre_actividades' => $this->faker->sentence(),
+            'descripcion' => $this->faker->paragraph(),
+            'fecha_inicia_actividad' => $this->faker->dataTimeBetween('-1 week', '+1 week'),
+            'fecha_termino_actividad' => $this->faker->dataTimeBetween($this->faker->date('Y-m-d'), $this->faker->date('Y-m-d')),
+            'hora_inicio_actividad' => $this->faker->time(),
+            'hora_termino_actividad' => $this->faker->time(),
+            'lugar' => $this->faker->streetAddress(),
+            'responsable' => $this->faker->name(),
             'area_de_servicio_id' => AreasDeServicio::factory(),
         ];
     }

@@ -18,17 +18,21 @@ return new class extends Migration
             $table->string('cedula')->unique();
             $table->enum('genero', ['Masculino', 'Femenino']);
             $table->date('fecha_nacimiento');
+            $table->tinyInteger('edad')->unsigned();
+            $table->string('provincia', 100)->default('Distrito');
             $table->string('direccion');
-            $table->string('celular');
-            $table->string('telefono')->nullable();
+            $table->string('celular1');
+            $table->string('celular2')->nullable();
             $table->string('correo_electronico');
             $table->enum('estado_civil',['Soltero', 'Casado', 'Viudo', 'Dirvociado']);
             $table->date('fecha_conversion');
             $table->date('fecha_bautismo');
-            $table->string('recomendacion');
+            $table->string('recomendacion')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('imagen')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
