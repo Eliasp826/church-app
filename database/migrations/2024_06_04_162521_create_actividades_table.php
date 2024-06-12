@@ -21,7 +21,9 @@ return new class extends Migration
             $table->time('hora_termino_actividad');
             $table->string('lugar', 255);
             $table->string('responsable', 255);
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

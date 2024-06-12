@@ -11,6 +11,16 @@ class Miembro extends Model
     use HasFactory;
     protected $fillable = [];
 
+    // Accesores y Mutators (Opcionales)
+
+    public function getEdadCompletaAttribute()
+    {
+        if (!$this->fecha_nacimiento) {
+            return null;
+        }
+        $edad = Carbon::parse($this->fecha_nacimiento)->diffInYears(now());
+        return $edad . ' años';
+    }
     public function actividades()
     {
         return $this->hasMany(Actividades::class);

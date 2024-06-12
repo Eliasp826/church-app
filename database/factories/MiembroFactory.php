@@ -12,6 +12,9 @@ use Faker\Generator as Faker;
 class MiembroFactory extends Factory
 {
     /**
+     */
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -23,19 +26,21 @@ class MiembroFactory extends Factory
         return [
                 'nombres' => $name,
                 'apellidos' => $lastName,
-                'cedula' => $this->faker->identificacioncard(),
+                'cedula' => $this->faker->unique()->randomNumber(),
                 'genero' => $this->faker->randomElement(['masculino', 'feminino']),
                 'fecha_nacimiento' => $this->faker->date('Y-m-d'),
+                'edad' => $this->faker->numberBetween(['18, 100']),
+                'provincia' => $this->faker->state(),
                 'direccion' => $this->faker->streetAddress(),
-                'celular' => $this->faker->phoneNumber(),
-                'telefono' => $this->faker->phoneNumber(),
+                'celular1' => $this->faker->phoneNumber(),
+                'celular2' => $this->faker->optional()->phoneNumber(),
                 'correo_electronico' => $this->faker->email,
                 'estado_civil' => $this->faker->randomElement(['soltero', 'casado', 'viudo', 'divorciado']),
                 'fecha_conversion' => $this->faker->date('y-m-d', null),
                 'fecha_bautismo' => $this->faker->date('Y-m-d', null),
-                'recomendacion' => $this->faker->text(),
-                'descripcion' => $this->faker->text(),
-                'imagen' => $this->faker->image(),
+                'recomendacion' => $this->faker->optional()->sentence,
+                'descripcion' => $this->faker->optional()->paragraph,
+                'imagen' => $this->faker->optional()->imageUrl(),
             ];
     }
 }

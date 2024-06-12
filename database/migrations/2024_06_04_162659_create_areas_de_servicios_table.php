@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('nombre',  255);
             $table->text('descripcion');
             $table->string('responsable', 255);
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
