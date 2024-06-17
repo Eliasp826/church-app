@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MiembroCollection;
 use App\Models\Miembro;
 use App\Http\Requests\StoreMiembroRequest;
 use App\Http\Requests\UpdateMiembroRequest;
+use App\Filters\MiembroFilter;
+use Illuminate\Http\Request;
 
 class MiembroController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filter = new MiembroFilter();
+        $queryItems = $filter->transform($request);
+
+        $miembros = Miembro::where($queryItems);
+        return new MiembroCollection($miembros->paginate()->appends($request->query()));
     }
 
     /**
