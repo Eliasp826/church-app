@@ -22,11 +22,10 @@ class MiembroFactory extends Factory
     protected $model = Miembro::class;
     public function definition(): array
     {
-        $lastName = $this->faker->randomElement(['I', 'B']);
-        $name = $lastName == 'I' ? $this->faker->name() : $this->faker->lastName();
+
         return [
-                'nombres' => $name,
-                'apellidos' => $lastName,
+                'nombres' => $this->faker->name,
+                'apellidos' => $this->faker->lastName,
                 'cedula' => $this->faker->unique()->randomNumber(),
                 'genero' => $this->faker->randomElement(['M', 'F']),
                 'fecha_nacimiento' => $this->faker->date('Y-m-d'),
@@ -36,7 +35,7 @@ class MiembroFactory extends Factory
                 'celular1' => $this->faker->phoneNumber(),
                 'celular2' => $this->faker->optional()->phoneNumber(),
                 'correo_electronico' => $this->faker->email,
-                'estado_civil' => $this->faker->randomElement(['Soltero', 'Casado', 'Viudo', 'Divorciado']),
+                'estado_civil' => $this->faker->randomElement(['Soltero', 'Casado', 'Viudo', 'Dirvociado']),
                 'fecha_conversion' => $this->faker->date('y-m-d', null),
                 'fecha_bautismo' => $this->faker->date('Y-m-d', null),
                 'recomendacion' => $this->faker->optional()->sentence,
