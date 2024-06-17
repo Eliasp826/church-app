@@ -13,9 +13,10 @@ class MiembroSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         Miembro::factory()
-            ->count(25)
+            ->count(50)
             ->create();
+
+        //MiembroFactory::count(50)->create();
     }
 }

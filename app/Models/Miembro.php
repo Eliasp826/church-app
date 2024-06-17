@@ -25,6 +25,10 @@ class Miembro extends Model
     {
         return $this->hasMany(Actividades::class);
     }
+    public function grupos()
+    {
+     //   return $this->belongsToMany(Grupo::class);
+    }
 }
 
 
